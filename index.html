@@ -25,22 +25,27 @@
 <main>
   <!-- Ballot unit -->
   <section id="tab-vote">
-    <div class="vvpat">
+    <div class="vvpat unit">
+      <div class="unit-head"><span>VVPAT</span></div>
       <div class="vvpat-win">
         <div id="slip" class="slip" hidden></div>
-        <span id="vvpatIdle" class="vvpat-idle">VVPAT</span>
+        <span id="vvpatIdle" class="vvpat-idle">READY</span>
       </div>
+      <div class="vvpat-count">SLIPS<b id="slipCount">000</b></div>
     </div>
-    <div class="ballot" id="ballot"></div>
+    <div class="ballot unit">
+      <div class="unit-head"><span>BALLOT UNIT</span><span class="pwr"><i></i>POWER</span></div>
+      <div id="ballot"></div>
+    </div>
     <p class="hint">Press the blue button next to the candidate of your choice.</p>
   </section>
 
   <!-- Control unit / results -->
   <section id="tab-results" hidden>
-    <div class="card">
-      <h2>Results</h2>
+    <div class="cu unit">
+      <div class="unit-head"><span>CONTROL UNIT</span></div>
+      <div class="cu-display"><span>TOTAL POLLED</span><b id="totVotes">0</b></div>
       <div id="resRows"></div>
-      <div class="rtotal"><span>Total votes</span><b id="totVotes">0</b></div>
       <div id="winner" class="winner" hidden></div>
       <button class="btn danger" id="resetBtn" type="button">Reset all votes</button>
     </div>
