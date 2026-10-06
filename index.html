@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EVM &mdash; Mock Voting Machine</title>
+<meta name="description" content="A mock Electronic Voting Machine for practice and voter awareness.">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#16345f">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div>
+      <div class="t">EVM</div>
+      <div class="s">Mock Voting Machine</div>
+    </div>
+    <div class="voter">Voter No. <b id="voterNo">1</b></div>
+  </div>
+</header>
+
+<main>
+  <!-- Ballot unit -->
+  <section id="tab-vote">
+    <div class="vvpat">
+      <div class="vvpat-win">
+        <div id="slip" class="slip" hidden></div>
+        <span id="vvpatIdle" class="vvpat-idle">VVPAT</span>
+      </div>
+    </div>
+    <div class="ballot" id="ballot"></div>
+    <p class="hint">Press the blue button next to the candidate of your choice.</p>
+  </section>
+
+  <!-- Control unit / results -->
+  <section id="tab-results" hidden>
+    <div class="card">
+      <h2>Results</h2>
+      <div id="resRows"></div>
+      <div class="rtotal"><span>Total votes</span><b id="totVotes">0</b></div>
+      <div id="winner" class="winner" hidden></div>
+      <button class="btn danger" id="resetBtn" type="button">Reset all votes</button>
+    </div>
+  </section>
+
+  <!-- Setup -->
+  <section id="tab-setup" hidden>
+    <div class="card">
+      <h2>Candidates</h2>
+      <div id="candList"></div>
+      <h3>Add candidate</h3>
+      <input id="newName" placeholder="Candidate name" maxlength="30" autocomplete="off">
+      <div class="symgrid" id="symGrid"></div>
+      <button class="btn" id="addBtn" type="button">Add candidate</button>
+      <p class="note">Changing candidates resets all votes. NOTA is always on the ballot.</p>
+    </div>
+  </section>
+</main>
+
+<nav class="tabs">
+  <button data-tab="vote" class="active" type="button">Vote</button>
+  <button data-tab="results" type="button">Results</button>
+  <button data-tab="setup" type="button">Setup</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
