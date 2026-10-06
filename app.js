@@ -87,12 +87,12 @@ function renderBallot() {
     const row = document.createElement("div");
     row.className = "cand" + (e.nota ? " nota" : "");
     row.innerHTML =
-      '<span class="sl">' + (idx + 1) + '</span>' +
-      '<span class="sym">' + SYMS[e.sym] + '</span>' +
-      '<span class="nm">' + escapeHtml(e.name) + '</span>' +
+      '<span class="paper"><span class="sl">' + (idx + 1) + '</span>' +
+      '<span class="pname">' + escapeHtml(e.name) + '</span>' +
+      '<span class="psym">' + SYMS[e.sym] + '</span></span>' +
       '<span class="votebox"><span class="led" id="led-' + e.key + '"></span>' +
       '<button class="vbtn" type="button" aria-label="Vote for ' + escapeHtml(e.name) + '"></button></span>';
-    row.querySelector(".vbtn").addEventListener("click", () => castVote(e));
+    row.querySelector(".vbtn").addEventListener("click", () => castVote(e, idx));
     ballot.appendChild(row);
   });
   document.getElementById("voterNo").textContent = state.voterNo;
@@ -100,7 +100,10 @@ function renderBallot() {
 function escapeHtml(s) {
   return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
-function castVote(e) {
+function setSlipCount() {
+  document.getElementById("slipCount").textContent = String(state.voterNo - 1).padStart(3, "0");
+}
+function castVote(e, idx) {
   if (votingLock) return;
   votingLock = true;
   const led = document.getElementById("led-" + e.key);
@@ -113,8 +116,10 @@ function castVote(e) {
   // VVPAT slip, visible 7 seconds like the real machine
   vvpatIdle.hidden = true;
   slip.hidden = false;
-  slip.innerHTML = '<div class="sl-no">VVPAT &middot; SLIP</div><div class="sl-name">' +
-    escapeHtml(e.name) + '</div><div class="sl-sym">' + (e.nota ? "None of the Above" : "Symbol recorded") + '</div>';
+  slip.innerHTML = '<div class="sl-no">SL.NO ' + (idx + 1) + ' &middot; VVPAT</div>' +
+    '<div class="sl-symbig">' + SYMS[e.sym] + '</div>' +
+    '<div class="sl-name">' + escapeHtml(e.name) + '</div>';
+  setSlipCount();
   clearTimeout(slipTimer);
   slipTimer = setTimeout(() => { slip.hidden = true; vvpatIdle.hidden = false; }, 7000);
   setTimeout(() => {
@@ -155,6 +160,7 @@ document.getElementById("resetBtn").addEventListener("click", () => {
   if (!confirm("Reset all votes to zero?")) return;
   state.votes = {}; state.voterNo = 1; save();
   document.getElementById("voterNo").textContent = 1;
+  setSlipCount();
   renderResults();
 });
 
@@ -177,6 +183,7 @@ function renderSetup() {
       state.votes = {}; state.voterNo = 1; save();
       renderSetup(); renderBallot();
       document.getElementById("voterNo").textContent = 1;
+      setSlipCount();
     });
     row.appendChild(del);
     list.appendChild(row);
@@ -206,9 +213,11 @@ document.getElementById("addBtn").addEventListener("click", () => {
   inp.value = "";
   renderSetup(); renderBallot();
   document.getElementById("voterNo").textContent = 1;
+  setSlipCount();
 });
 
 renderBallot();
+setSlipCount();
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
 }
