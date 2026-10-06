@@ -2,29 +2,30 @@
 /* Mock EVM — ballot unit, VVPAT, control unit. All data stays on this device. */
 
 const SYMS = {
-  star: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>',
-  circle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8"/></svg>',
-  triangle: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3l10 18H2z"/></svg>',
-  square: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="1"/></svg>',
-  diamond: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8 10-8 10-8-10z"/></svg>',
-  heart: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C7 16.5 2 13 2 8.8 2 6 4.2 4 6.8 4c1.7 0 3.4 1 4.2 2.4h2C13.8 5 15.5 4 17.2 4 19.8 4 22 6 22 8.8c0 4.2-5 7.7-10 12.2z" transform="scale(0.95) translate(0.6,0.6)"/></svg>',
-  sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.5" fill="currentColor" stroke="none"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1"/></svg>',
-  moon: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg>',
-  flower: '<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7" r="3"/><circle cx="17" cy="12" r="3"/><circle cx="12" cy="17" r="3"/><circle cx="7" cy="12" r="3"/><circle cx="12" cy="12" r="2.2" fill="#fff"/></svg>',
-  umbrella: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 1 10 10H2A10 10 0 0 1 12 2zm-1 12h2v7a1 1 0 0 1-2 0v-7z"/></svg>',
-  tree: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l7 10h-4l5 7H4l5-7H5z"/><rect x="11" y="18" width="2" height="5"/></svg>',
-  cup: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h11v9a5 5 0 0 1-10 0V3h-1zm-2 0h2v2H3zM6 15h8l-1 6H7z"/></svg>',
+  lotus: '<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="8.5" rx="2.2" ry="5"/><ellipse cx="7.6" cy="10.5" rx="2" ry="4.4" transform="rotate(-35 7.6 10.5)"/><ellipse cx="16.4" cy="10.5" rx="2" ry="4.4" transform="rotate(35 16.4 10.5)"/><ellipse cx="4.6" cy="14" rx="1.8" ry="3.8" transform="rotate(-60 4.6 14)"/><ellipse cx="19.4" cy="14" rx="1.8" ry="3.8" transform="rotate(60 19.4 14)"/><path d="M7.5 19.5h9l-1.2 2.5H6.3z"/></svg>',
+  hand: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="10.5" width="10" height="10.5" rx="4"/><rect x="7.2" y="3.5" width="2.4" height="8" rx="1.2"/><rect x="10.4" y="2.5" width="2.4" height="9" rx="1.2"/><rect x="13.6" y="3.5" width="2.4" height="8" rx="1.2"/><rect x="3.6" y="9.5" width="2.6" height="7" rx="1.3" transform="rotate(-28 4.9 13)"/></svg>',
+  broom: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="11" y="1" width="2.2" height="12" rx="1" transform="rotate(18 12 7)"/><path d="M8.5 13.5h9L19 21H7z"/></svg>',
+  elephant: '<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="13.5" cy="13" rx="6.5" ry="5.2"/><circle cx="6.8" cy="10.2" r="3.4"/><path d="M4.6 11.5c-1.6 2-1.7 5 .3 7.2l1.9-.7c-1.5-1.7-1.5-3.9-.4-5.7z"/><ellipse cx="9.2" cy="8.6" rx="1.9" ry="2.5"/><rect x="9.5" y="16" width="2.6" height="5" rx="1"/><rect x="14.5" y="16" width="2.6" height="5" rx="1"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.5 2.2"/></svg>',
+  bicycle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="16.5" r="3.8"/><circle cx="18" cy="16.5" r="3.8"/><path d="M6 16.5l5-9h4l3 9M11 7.5L9.5 5h3M15 7.5l2-2"/></svg>',
+  lamp: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="10" y="1.5" width="4" height="2.6" rx="1"/><path d="M9.5 4.5c-2.2 2-3.5 4.2-3.5 7h12c0-2.8-1.3-5-3.5-7z" opacity=".55"/><path d="M8 12.5h8l-1.2 4.5H9.2z"/><rect x="10.8" y="17.5" width="2.4" height="3" rx="1"/><ellipse cx="12" cy="22" rx="5" ry="1.3"/></svg>',
+  sun: '<svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 0 1 10 0z" fill="currentColor"/><g stroke="currentColor" stroke-width="1.8"><path d="M12 3v3.5M5.8 5.8l2.5 2.5M18.2 5.8l-2.5 2.5M3 12h3.5M17.5 12H21"/></g><rect x="2" y="19.5" width="20" height="2" fill="currentColor"/></svg>',
+  leaves: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.5 2.5C7 6.5 6 11.5 7.2 19.5c6.5-1.2 10.3-5 11.3-11.5-3.5-3-6-4.5-8-5.5z"/><path d="M4 9c-1 4-.5 8 2 12 2.5-4 3-8 2-12-1.5-.5-2.8-.5-4 0z" opacity=".7"/></svg>',
+  torch: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1c2.2 2.8 3.2 4.6 3.2 7a3.2 3.2 0 0 1-6.4 0c0-1 .4-2 1-2.8.3 1 1 1.6 2.2 1.6-.6-2-.2-4 0-5.8z"/><rect x="8" y="10" width="8" height="2.4" rx="1"/><rect x="10.9" y="12.4" width="2.2" height="9" rx="1"/></svg>',
+  scales: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M8 21h8M12 5.5L4.5 7.5M12 5.5l7.5 2"/><path d="M4.5 7.5L2 13.5a2.8 2.8 0 0 0 5 0L4.5 7.5zM19.5 7.5L17 13.5a2.8 2.8 0 0 0 5 0l-2.5-6z"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 5.5C10 4 7 3.5 3.5 3.5v15c3.5 0 6.5.5 8.5 2 2-1.5 5-2 8.5-2v-15c-3.5 0-6.5.5-8.5 2zm0 0v15"/></svg>',
   nota: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><path d="M6.5 6.5l11 11"/></svg>'
 };
 const SYM_KEYS = Object.keys(SYMS).filter(k => k !== "nota");
 
-const LS_KEY = "evm-mock-v1";
+const LS_KEY = "evm-mock-v2";
 const DEFAULTS = () => ({
   candidates: [
-    {name: "Aarav Sharma", sym: "star"},
-    {name: "Priya Deka", sym: "flower"},
-    {name: "Rahul Bora", sym: "sun"},
-    {name: "Mamoni Das", sym: "moon"}
+    {name: "BJP", sym: "lotus"},
+    {name: "Congress", sym: "hand"},
+    {name: "AAP", sym: "broom"},
+    {name: "BSP", sym: "elephant"},
+    {name: "Samajwadi Party", sym: "bicycle"}
   ],
   votes: {},
   voterNo: 1
@@ -156,6 +157,62 @@ function renderResults() {
     w.textContent = tied ? "It's a tie!" : "Winner: " + top.name;
   }
 }
+/* ---------- election result as PDF (no libraries) ---------- */
+document.getElementById("pdfBtn").addEventListener("click", downloadResultPDF);
+function downloadResultPDF() {
+  const esc = s => String(s).replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+  const entries = allEntries().map(e => ({name: e.name, v: votesFor(e.key)}));
+  const total = entries.reduce((x, e) => x + e.v, 0);
+  const sorted = [...entries].sort((p, q) => q.v - p.v);
+  const now = new Date();
+  const dstr = now.toLocaleDateString("en-IN", {day: "2-digit", month: "short", year: "numeric"}) +
+    " " + now.toLocaleTimeString("en-IN", {hour: "2-digit", minute: "2-digit"});
+  let C = "";
+  const T = (txt, x, y, size, bold) => {
+    C += "BT /" + (bold ? "HB" : "H") + " " + size + " Tf " + x.toFixed(1) + " " + y.toFixed(1) +
+      " Td (" + esc(txt) + ") Tj ET\n";
+  };
+  const line = (x1, y, x2) => { C += x1 + " " + y + " m " + x2 + " " + y + " l S\n"; };
+  T("MOCK ELECTION RESULT", 60, 790, 20, true);
+  T("Generated: " + dstr, 60, 768, 10, false);
+  let y = 736;
+  T("SL", 60, y, 11, true); T("CANDIDATE", 100, y, 11, true);
+  T("VOTES", 400, y, 11, true); T("SHARE", 480, y, 11, true);
+  line(60, y - 8, 545); y -= 28;
+  sorted.forEach((e, i) => {
+    const pct = total ? (e.v / total * 100).toFixed(1) + "%" : "0.0%";
+    T(String(i + 1), 60, y, 11, false);
+    T(e.name, 100, y, 11, false);
+    T(String(e.v), 400, y, 11, false);
+    T(pct, 480, y, 11, false);
+    y -= 20;
+  });
+  line(60, y + 6, 545); y -= 16;
+  T("TOTAL VOTES: " + total, 60, y, 12, true); y -= 26;
+  const top = sorted[0], tied = sorted.filter(e => e.v === top.v).length > 1;
+  T(total ? (tied ? "RESULT: TIE" : "WINNER: " + top.name.toUpperCase()) : "NO VOTES POLLED", 60, y, 13, true);
+  T("Mock EVM app - for practice and voter awareness only.", 60, 60, 9, false);
+  const objs = [];
+  objs[1] = "<< /Type /Catalog /Pages 2 0 R >>";
+  objs[2] = "<< /Type /Pages /Kids [3 0 R] /Count 1 >>";
+  objs[3] = "<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /H 5 0 R /HB 6 0 R >> >> >>";
+  objs[4] = "<< /Length " + C.length + " >>\nstream\n" + C + "endstream";
+  objs[5] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>";
+  objs[6] = "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>";
+  let pdf = "%PDF-1.4\n"; const off = [0];
+  for (let i = 1; i <= 6; i++) { off[i] = pdf.length; pdf += i + " 0 obj\n" + objs[i] + "\nendobj\n"; }
+  const xref = pdf.length;
+  pdf += "xref\n0 7\n0000000000 65535 f \n";
+  for (let i = 1; i <= 6; i++) pdf += String(off[i]).padStart(10, "0") + " 00000 n \n";
+  pdf += "trailer\n<< /Size 7 /Root 1 0 R >>\nstartxref\n" + xref + "\n%%EOF";
+  const blob = new Blob([pdf], {type: "application/pdf"});
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "election-result.pdf";
+  document.body.appendChild(link); link.click(); link.remove();
+  setTimeout(() => URL.revokeObjectURL(link.href), 4000);
+}
+
 document.getElementById("resetBtn").addEventListener("click", () => {
   if (!confirm("Reset all votes to zero?")) return;
   state.votes = {}; state.voterNo = 1; save();
